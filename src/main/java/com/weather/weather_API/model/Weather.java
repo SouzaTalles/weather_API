@@ -2,10 +2,12 @@ package com.weather.weather_API.model;
 
 import lombok.*;
 
+import java.io.Serializable;
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Weather {
+public class Weather implements Serializable {
     private String dateTime;
     private String description;
     private String address;

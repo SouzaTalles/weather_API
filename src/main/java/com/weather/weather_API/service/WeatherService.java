@@ -5,7 +5,6 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.weather.weather_API.model.Weather;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.client.RestTemplate;
 
 import java.util.List;
@@ -27,12 +26,14 @@ public class WeatherService {
         String address = (String) stringStringMap.get("address");
         String description = (String) stringStringMap.get("description");
         String dateTime = (String) firstDay.get("datetime");
-        double temp = (double) firstDay.get("temp");
-        double tempmax = (double) firstDay.get("tempmax");
-        double tempmin = (double) firstDay.get("tempmin");
+        double temp = converter((double) firstDay.get("temp"));
+        double tempmax = converter((double) firstDay.get("tempmax"));
+        double tempmin = converter((double) firstDay.get("tempmin"));
 
-        Weather weather = new Weather(dateTime, description, address, temp, tempmax, tempmin);
+        return new Weather(dateTime, description, address, temp, tempmax, tempmin);
+    }
 
-        return weather;
+    private static double converter(double temp) {
+        return Math.round((temp - 32) / 1.8);
     }
 }
