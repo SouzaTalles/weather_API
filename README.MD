@@ -56,11 +56,13 @@ $env:API_KEY = "SUA CHAVE"
 
 Substitua "SUA CHAVE" pela sua chave de API real. O WeatherController.java injeta essa chave usando @Value("${API_KEY}").
 
+---
+
 ## 🏃 Como Executar o Projeto
 
 1. Clone o repositório:
 ```bash
-git clone <URL do seu repositório>
+git clone https://github.com/SouzaTalles/weather_API.git
 ```
 
 2. Entrar na pasta do projeto:
@@ -81,6 +83,8 @@ cd weather_API
 ```
 
 **A aplicação estará disponível em http://localhost:8080.**
+
+---
 
 ## 💻 Endpoint
 
@@ -107,6 +111,8 @@ http://localhost:8080/weather/{cidade ou pais}
     "tempmin": 19.0
 }
 ```
+
+---
 
 ## 🧠 Detalhes da Implementação (Caching com Redis)
 
@@ -135,6 +141,16 @@ public Weather weather(@PathVariable String country) throws JsonProcessingExcept
 }
 ```
 **Mecanismo:** Na primeira requisição para um dado país/cidade (#country), o corpo do método é executado (chamada à API externa). Nas requisições subsequentes (Cache Hit) com a mesma chave, o resultado é servido diretamente do Redis, ignorando a chamada externa e o serviço de clima.
+
+---
+
+## Author
+Developed by Talles Souza.
+
+---
+
+Project URL
+Roadmap project
 
 
 
